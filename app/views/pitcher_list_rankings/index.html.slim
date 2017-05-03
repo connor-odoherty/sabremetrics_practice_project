@@ -1,0 +1,56 @@
+h1 Pitcher List Rankings
+
+.container
+  .col-xs-12
+    .row
+      .col-sm-1
+        | Rank
+      .col-sm-1
+        | Change
+      .col-sm-3
+        | Player Name
+      .col-sm-1
+        | Previous
+      .col-sm-1
+        | Best
+      .col-sm-3
+        | Worst
+
+    - @pitcher_list_rankings.each do |pitcher|
+      .row
+        .col-sm-1
+          = pitcher[:rank]
+        .col-sm-1
+          = pitcher[:change]
+        .col-sm-3
+          = pitcher[:name]
+        .col-sm-1
+          = pitcher[:previous]
+        .col-sm-1
+          = pitcher[:best]
+        .col-sm-3
+          = pitcher[:worst]
+
+
+
+
+
+
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @pitcher_list_rankings_stub.each do |pitcher_list_ranking|
+      tr
+        td = link_to 'Show', pitcher_list_ranking
+        td = link_to 'Edit', edit_pitcher_list_ranking_path(pitcher_list_ranking)
+        td = link_to 'Destroy', pitcher_list_ranking, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Pitcher list ranking', new_pitcher_list_ranking_path

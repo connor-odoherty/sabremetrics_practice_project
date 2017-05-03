@@ -1,0 +1,9 @@
+= form_for @pitcher_list_ranking do |f|
+  - if @pitcher_list_ranking.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@pitcher_list_ranking.errors.count, "error")} prohibited this pitcher_list_ranking from being saved:"
+      ul
+        - @pitcher_list_ranking.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit
